@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <title>ESZI032-17SA R2</title>
+  <link rel="icon" href="/Assets/Logo_UFABC.svg" />
+
+  <style>
+    .content {
+      width: 100vw;
+      min-height: calc(100vh - 56px);
+      background-color: #eeeeee;
+      padding: 2rem 1rem;
+    }
+  </style>
+
+  <!-- load components -->
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script>
+    $(function () {
+      $("#navbar").load("../components/navBar.html");
+    });
+  </script>
+
+</head>
+
+<body>
+
+  <header id="navbar"></header>
+
+  <div class='content'>
+
+    <div class="card">
+      <div class="card-header">
+        <h2>Código fonte</h2>
+      </div>
+
+      <div class="card-body" style="padding: 2rem;">
+        <!-- <a href="https://github.com/Processamento-de-video-UFABC-2021-2/Processamento-de-video-UFABC-2021-2.github.io/blob/main/relatorio_2.ipynb" target="_blank">Link para o notebook</a> -->
+      </div>
+    </div>
+
+    <br>
+
+    <div class="card">
+      <div class="card-header">
+        <h2>BGR's</h2>
+      </div>
+
+      <div class="card-body" style="padding: 2rem;">
+        <div>
+          <h5>Integrantes</h5>
+          <img src="/Assets/r3/grupo_bgr.png" class="card-img-top" alt="grupo5">
+        </div>
+
+        <div class="mt-4">
+          <h5>Avatares</h5>
+          <img src="/Assets/r3/avatares_bgr.png" class="card-img-top" alt="grupo3">
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="card">
+      <div class="card-header">
+        <h2>GRAY's</h2>
+      </div>
+
+      <div class="card-body" style="padding: 2rem;">
+        <div>
+          <h5>Integrantes</h5>
+          <img src="/Assets/r3/grupo_gray.png" class="card-img-top" alt="grupo5">
+        </div>
+
+        <div class="mt-4">
+          <h5>Avatares</h5>
+          <img src="/Assets/r3/avatares_gray.png" class="card-img-top" alt="grupo3">
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="card">
+      <div class="card-header">
+        <h2>HSV's</h2>
+      </div>
+
+      <div class="card-body" style="padding: 2rem;">
+        <div>
+          <h5>Integrantes</h5>
+          <img src="/Assets/r3/grupo_hsv.png" class="card-img-top" alt="grupo5">
+        </div>
+
+        <div class="mt-4">
+          <h5>Avatares</h5>
+          <img src="/Assets/r3/avatares_hsv.png" class="card-img-top" alt="grupo3">
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card">
+      <div class="card-header">
+        <h2>Rastreamento</h2>
+      </div>
+
+      <div class="card-body" style="padding: 2rem;">
+        <div>
+          <h5>Original</h5>
+          <video width="100%" controls>
+            <source src="../Assets/r3/video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div class="mt-4">
+          <h5>Restreia cor azul</h5>
+          <video width="100%" height="240" controls>
+            <source src="../Assets/r3/tracking_blue.webm" type="video/webm">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div class="mt-4">
+          <h5>Restreia cor azul ou vermelha</h5>
+          <video width="100%" height="240" controls>
+            <source src="../Assets/r3/tracking_blue.webm" type="video/webm">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+</body>
+
+</html>
