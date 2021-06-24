@@ -54,6 +54,8 @@
       </div>
 
       <div class="card-body" style="padding: 2rem;">
+        <p class="h4" style="font-weight: normal;">Para gerar as imagens abaixo foi executada a função <i style="color: green !important">blur()</i> da biblioteca OpenCV, a qual obtém a média dos pixeis sob a área do kernel e substitui o elemento central</p>
+        <br>
         <div>
           <h5>Kernel Size: 5x5</h5>
           <img src="/Assets/r2/blur-average-grupo-5.png" class="card-img-top" alt="grupo5">
@@ -82,6 +84,9 @@
       </div>
 
       <div class="card-body" style="padding: 2rem;">
+        <p class="h4" style="font-weight: normal;">Para gerar as imagens abaixo foi executada a função <i style="color: green !important">GaussianBlur()</i> da biblioteca OpenCV, a qual trabalha diante do kernel gaussiano, utilizada para retirar ruídos gaussianos da imagem</p>
+        <i class="h6" style="font-weight: normal;">OBS: é necessário que os parâmetros de largura altura sejam ímpares</i>
+        <br>
         <div class="mt-4">
           <h4>Sigma X: 5 | Sigma Y: 5</h4>
           <img src="/Assets/r2/blur-gaussian-grupo-5.png" class="card-img-top" alt="grupo5">
@@ -109,6 +114,9 @@
       </div>
 
       <div class="card-body" style="padding: 2rem;">
+        <p class="h4" style="font-weight: normal;">Para gerar as imagens abaixo foi executada a função <i style="color: green !important">medianBlur()</i> da biblioteca OpenCV, a qual obtém a mediana de todos os pixeis sob a área do kernel e substitui o elemento central pelo valor da mediana.</p>
+        <i class="h6" style="font-weight: normal;">OBS: é necessário que o parâmetro de tamanho de kernel seja um ímpar inteiro</i>
+        <br><br>
         <div>
           <h5>Kernel Size: 5</h5>
           <img src="/Assets/r2/blur-mediana-grupo-5.png" class="card-img-top" alt="grupo5">
@@ -134,6 +142,12 @@
       </div>
 
       <div class="card-body" style="padding: 2rem;">
+        <p class="h4" style="font-weight: normal;">Para gerar as imagens abaixo foi executada a função <i style="color: green !important">bilateralFilter()</i> da biblioteca OpenCV, a qual é utilizada para retirar o ruído da imagem mantendo as bordas "afiadas"</p>
+        <p class="h5" style="font-weight: normal;">Os parâmetros utilizados foram escolhidos após leitura da <a href="https://docs.opencv.org/4.5.2/d4/d86/group__imgproc__filter.html#ga9d7064d478c95d60003cf839430737ed" target="_blank">documentação</a> abaixo:</p>
+        <i class="h6" style="font-weight: normal;">Sigma values: For simplicity, you can set the 2 sigma values to be the same. If they are small (< 10), the filter will not have much effect, whereas if they are large (> 150), they will have a very strong effect, making the image look "cartoonish".</i>
+        <br>
+        <i class="h6" style="font-weight: normal;">Filter size: Large filters (d > 5) are very slow, so it is recommended to use d=5 for real-time applications, and perhaps d=9 for offline applications that need heavy noise filtering.</i>
+        <br><br>
         <div>
           <h5>Filter Size: 9 | Sigma X: 150 | Sigma Y: 150
           </h5>
