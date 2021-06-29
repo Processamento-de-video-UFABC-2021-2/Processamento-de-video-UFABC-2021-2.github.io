@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <title>ESZI032-17SA R4</title>
+  <link rel="icon" href="/Assets/Logo_UFABC.svg" />
+
+  <style>
+    .content {
+      width: 100vw;
+      min-height: calc(100vh - 56px);
+      background-color: #eeeeee;
+      padding: 2rem 1rem;
+    }
+  </style>
+
+  <!-- load components -->
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script>
+    $(function () {
+      $("#navbar").load("../components/navBar.html");
+    });
+  </script>
+
+</head>
+
+<body>
+
+  <header id="navbar"></header>
+
+  <div class='content'>
+
+    <div class="card">
+      <div class="card-header">
+        <h2>Código fonte</h2>
+      </div>
+
+      <div class="card-body" style="padding: 2rem;">
+        <a href="https://github.com/Processamento-de-video-UFABC-2021-2/Processamento-de-video-UFABC-2021-2.github.io/blob/main/colab-notebooks/relatorio_4.ipynb" target="_blank">Link para o notebook</a>
+        <a href="/colab-notebooks/relatorio_4.ipynb" target="_blank" style="margin-left: 20px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-arrow-down" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M7.646 10.854a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 9.293V5.5a.5.5 0 0 0-1 0v3.793L6.354 8.146a.5.5 0 1 0-.708.708l2 2z" />
+            <path d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383zm.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="card">
+      <div class="card-header">
+        <h2>P&B Original</h2>
+      </div>
+
+      <div class="card-body" style="padding: 2rem;">
+        <p class="h4" style="font-weight: normal;">A imagem abaixo é utilizada como base para o restante do relatório. A mesma foi obtida via parâmetro <i>cv.IMREAD_GRAYSCALE</i> da biblioteca OpenCV, da mesma forma feita no primeiro relatório.</p>
+        <br>
+        <div>
+          <img src="/Assets/r4/pb-original.png" class="card-img-top">
+        </div>
+        <div class="mt-4">
+          <p class="h4" style="font-weight: normal;">O histograma abaixo é referente à distribuição dos pixeis entre as extremidades da imagem, utilizado como base de comparação para os histogramas que serão obtidos a partir das imagens geradas.</p>
+          <img height=400 src="/Assets/r4/pb-original-histograma.png">
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="card">
+      <div class="card-header">
+        <h2>NumPy</h2>
+      </div>
+
+      <div class="card-body" style="padding: 2rem;">
+        <p class="h4" style="font-weight: normal;">Para gerar as imagens abaixo foi utilizada a biblioteca NumPy, a qual utiliza o método de função de distribuição cumulativa(cdf) para equalizar a imagem</p>
+        <br>
+        <div>
+          <h4>Imagem equalizada</h4>
+          <img src="/Assets/r4/numpy-equalized.png" class="card-img-top">
+        </div>
+        <div class="mt-4">
+          <h4>Histograma da imagem equalizada:</h4>
+          <img height=400 src="/Assets/r4/numpy-equalized-histograma.png">
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="card">
+      <div class="card-header">
+        <h2>OpenCV</h2>
+      </div>
+
+      <div class="card-body" style="padding: 2rem;">
+        <p class="h4" style="font-weight: normal;">Para equalizar a imagem abaixo foi utilizada a função <i>equalizeHist()</i> da biblioteca OpenCV.</p>
+        <br>
+        <div>
+          <h4>Imagem equalizada</h4>
+          <img src="/Assets/r4/opencv-equalized.png" class="card-img-top">
+        </div>
+        <div class="mt-4">
+          <h4>Histograma da imagem equalizada:</h4>
+          <img height=400 src="/Assets/r4/open-cv-equalized.png">
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="card">
+      <div class="card-header">
+        <h2>CLAHE</h2>
+      </div>
+
+      <div class="card-body" style="padding: 2rem;">
+        <p class="h4" style="font-weight: normal;">Para equalizar a imagem abaixo foi necessário utilizar a função <i>createCLAHE()</i> assignando-a à uma variável, permitindo a execução do método <i>.apply(image)</i> passando uma imagem como parâmetro para equalizá-la pelo contraste adaptativo limitado.</p>
+        <br>
+        <div>
+          <h4>Imagem equalizada</h4>
+          <img src="/Assets/r4/clahe-equalized.png" class="card-img-top">
+        </div>
+        <div class="mt-4">
+          <h4>Histograma da imagem equalizada:</h4>
+          <img height=400 src="/Assets/r4/clahe-equalized-histograma.png">
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="card">
+      <div class="card-header">
+        <h2>Thresholding</h2>
+      </div>
+
+      <div class="card-body" style="padding: 2rem;">
+        <p class="h4" style="font-weight: normal;">Diante de algumas metodologias que utilizam o algorítmo de thresholding, é obtida a segmentação de imagem, a partir de uma imagem em <i>GRAY_SCALE</i>(gerada anteriormente). Isto é possivel pois o algorítmo analisa cada pixel da imagem, no qual se a intensidade do pixel for maior que o valor devido o mesmo passará a ser branco, caso contrário será preto.</p>
+        <br>
+        <div>
+          <h4>Binário</h4>
+          <img src="/Assets/r4/threshold-binary.png" class="card-img-top">
+        </div>
+        <div class="mt-4">
+          <h4>Binário Invertido</h4>
+          <img src="/Assets/r4/threshold-binary-inverted.png" class="card-img-top">
+        </div>
+        <div class="mt-4">
+          <h4>Truncamento</h4>
+          <img src="/Assets/r4/threshold-trunc.png" class="card-img-top">
+        </div>
+        <div class="mt-4">
+          <h4>"To Zero"</h4>
+          <img src="/Assets/r4/threshold-to-zero.png" class="card-img-top">
+        </div>
+        <div class="mt-4">
+          <h4>"To Zero" Invertido</h4>
+          <img src="/Assets/r4/threshold-to-zero-inverted.png" class="card-img-top">
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="card">
+      <div class="card-header">
+        <h2>Threshold Adaptativo</h2>
+      </div>
+
+      <div class="card-body" style="padding: 2rem;">
+        <p class="h4" style="font-weight: normal;">Para obtençaõ das imagens abaixo foi utilizada a função <i>adaptiveThreshold()</i> da biblioteca OpenCV.</p>
+        <br>
+        <div>
+          <h4>"Adaptive Mean Thresholding"</h4>
+          <img src="/Assets/r4/threshold-adaptative-mean.png" class="card-img-top">
+        </div>
+        <div class="mt-4">
+          <h4>"Adaptive Gaussian Thresholding"</h4>
+          <img src="/Assets/r4/threshold-adaptative-gaussian.png" class="card-img-top">
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="card">
+      <div class="card-header">
+        <h2>Threshold - Binarização Otsu</h2>
+      </div>
+
+      <div class="card-body" style="padding: 2rem;">
+        <p class="h4" style="font-weight: normal;">Para obtençaõ das imagens abaixo foi utilizada a função <i> threshold()</i> da biblioteca OpenCV, passando os argumentos <i>cv.THRESH_BINARY+cv.THRESH_OTSU</i></p>
+        <br>
+        <div class="d-flex">
+          <div class="row">
+            <div class="col-4">
+              <h4>Imagem Original com Ruído</h4>
+              <img src="/Assets/r4/original-noisy-1.png" class="card-img-top">
+            </div>
+            <div class="col-4">
+              <h4>Histograma</h4>
+              <img src="/Assets/r4/original-noisy-1-histograma.png">
+            </div>
+            <div class="col-4">
+              <h4>Threshold Global (v=127)</h4>
+              <img src="/Assets/r4/original-noisy-1-global-thresholding.png" class="card-img-top">
+            </div>
+          </div>
+        </div>
+        <div class="d-flex mt-4">
+          <div class="row">
+            <div class="col-4">
+              <h4>Imagem Original com Ruído</h4>
+              <img src="/Assets/r4/original-noisy-2.png" class="card-img-top">
+            </div>
+            <div class="col-4">
+              <h4>Histograma</h4>
+              <img src="/Assets/r4/original-noisy-2-histograma.png">
+            </div>
+            <div class="col-4">
+              <h4>Otsu's Tresholding</h4>
+              <img src="/Assets/r4/original-noisy-2-otsu-thresholding.png" class="card-img-top">
+            </div>
+          </div>
+        </div>
+        <div class="d-flex mt-4">
+          <div class="row">
+            <div class="col-4">
+              <h4>Imagem Filtrada Gaussiana</h4>
+              <img src="/Assets/r4/gaussian-filtered.png" class="card-img-top">
+            </div>
+            <div class="col-4">
+              <h4>Histograma</h4>
+              <img src="/Assets/r4/gaussian-filtered-histograma.png">
+            </div>
+            <div class="col-4">
+              <h4>Otsu's Tresholding</h4>
+              <img src="/Assets/r4/gaussian-filtered-otsu-thresholding.png" class="card-img-top">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+</body>
+
+</html>
