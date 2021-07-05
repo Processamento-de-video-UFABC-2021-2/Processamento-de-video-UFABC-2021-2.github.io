@@ -69,6 +69,7 @@
           <p class="h4" style="font-weight: normal;">O histograma abaixo é referente à distribuição dos pixeis entre as extremidades da imagem, utilizado como base de comparação para os histogramas que serão obtidos a partir das imagens geradas.</p>
           <img height=400 src="/Assets/r4/pb-original-histograma.png">
         </div>
+        <p class="h4 mt-4" style="font-weight: normal;">Podemos observar que não há uma distribuição simétrica entre as extremidades da imagem, tendo picos de pixeis em alguns momentos.</p>
       </div>
     </div>
 
@@ -86,10 +87,12 @@
           <h4>Imagem equalizada</h4>
           <img src="/Assets/r4/numpy-equalized.png" class="card-img-top">
         </div>
+        <p class="h4 mt-4" style="font-weight: normal;">Podemos visualizar uma imagem com um detalhamento acentuado, devido a equalização.</p>
         <div class="mt-4">
           <h4>Histograma da imagem equalizada:</h4>
           <img height=400 src="/Assets/r4/numpy-equalized-histograma.png">
         </div>
+        <p class="h4 mt-4" style="font-weight: normal;">Após a equalização é da imagem é perceptível, a partir do histograma, observarmos que a distribuição dos pixeis está simétrica em relação as extremidades, possibilitando uma melhor visualização da mesma.</p>
       </div>
     </div>
 
@@ -107,10 +110,12 @@
           <h4>Imagem equalizada</h4>
           <img src="/Assets/r4/opencv-equalized.png" class="card-img-top">
         </div>
+        <p class="h4 mt-4" style="font-weight: normal;">Imagem com maior detalhamento após equalização.</p>
         <div class="mt-4">
           <h4>Histograma da imagem equalizada:</h4>
           <img height=400 src="/Assets/r4/open-cv-equalized.png">
         </div>
+        <p class="h4 mt-4" style="font-weight: normal;">O histograma possui as mesmas características de quando confeccionado a partir da biblioteca NumPy, tendo uma distribuição simétrica em relação as extremidades da imagem.</p>
       </div>
     </div>
 
@@ -128,10 +133,12 @@
           <h4>Imagem equalizada</h4>
           <img src="/Assets/r4/clahe-equalized.png" class="card-img-top">
         </div>
+        <p class="h4 mt-4" style="font-weight: normal;">A qualidade no detalhamento da imagem é nitidamente superior após a equalização via CLAHE, possuindo bons resultados.</p>
         <div class="mt-4">
           <h4>Histograma da imagem equalizada:</h4>
           <img height=400 src="/Assets/r4/clahe-equalized-histograma.png">
         </div>
+        <p class="h4 mt-4" style="font-weight: normal;">A distribuição dos pixeis também atingiu ótimas métricas, tendo uma distribuição simétrica e bem "preenchida" (não há espaçamentos em branco como nos histogramas anteriores). Dessa forma podemos afirmar que a metodologia CLAHE obteve os melhores resultados e desempenhos de equalização diante suas similares.</p>
       </div>
     </div>
 
@@ -149,10 +156,12 @@
           <h4>Binário</h4>
           <img src="/Assets/r4/threshold-binary.png" class="card-img-top">
         </div>
+        <p class="h4 mt-4" style="font-weight: normal;">Para realizar a binarização é necessário utilizar uma imagem em tons de cinza, a qual classificará os pixeis entre 0 e 1 a partir do threshold. Obtemos uma imagem binarizada, porém com baixa qualidade.</p>
         <div class="mt-4">
           <h4>Binário Invertido</h4>
           <img src="/Assets/r4/threshold-binary-inverted.png" class="card-img-top">
         </div>
+        <p class="h4 mt-4" style="font-weight: normal;">Da mesma maneira explicada acima para a imagem binária, os pixeis são classificados da mesma forma, entretanto de uma maneira inversa.</p>
         <div class="mt-4">
           <h4>Truncamento</h4>
           <img src="/Assets/r4/threshold-trunc.png" class="card-img-top">
@@ -176,7 +185,7 @@
       </div>
 
       <div class="card-body" style="padding: 2rem;">
-        <p class="h4" style="font-weight: normal;">Para obtenção das imagens abaixo foi utilizada a função <i>adaptiveThreshold()</i> da biblioteca OpenCV.</p>
+        <p class="h4" style="font-weight: normal;">Para obtenção das imagens abaixo foi utilizada a função <i>adaptiveThreshold()</i> da biblioteca OpenCV. Nessa metodologia são geradas "sub-imagens" e aplicados os thresholds individuais para cada uma.</p>
         <br>
         <div>
           <h4>"Adaptive Mean Thresholding"</h4>
@@ -247,6 +256,19 @@
             </div>
           </div>
         </div>
+        <p class="h4" style="font-weight: normal;">Para o thresholding no método de Otsu não obtivemos sucesso em nossos testes. As suspeitas em relação as problemáticas devem-se a imagem utilizada como base para o estudo, a qual se difere muito dos exemplos vistos na documentação do OpenCV e em outros tutorias da internet, os quais utilizam imagens mais simples com formas geométricas bem definidas.</p>
+      </div>
+    </div>
+    <br>
+    <div class="card">
+      <div class="card-header">
+        <h2>Conclusões</h2>
+      </div>
+      <div class="card-body" style="padding: 2rem;">
+        <h4>Histogramas & Equalização</h4>
+        <p class="h4" style="font-weight: normal;">Dentre as metodologias utilizadas, em todas execuções obtivemos sucesso em nossos resultados, os quais possuiam como objetivo uma equalização da imagem e uma distribuição mais simétrica dos pixeis. A biblioteca NumPy e OpenCV demonstraram um desempenho igualado, tanto em qualidade de equaliazão quanto em distribuição. Já a metodologia CLAHE foi o destaque entre as três, possuindo o melhor desempenho em detalhamento da imagem e distribuição de pixeis.</p>
+        <h4 class="mt-4">Thresholding</h4>
+        <p class="h4" style="font-weight: normal;">Mesmo diante do sucesso na execução do laboratório, podemos concluir que a imagem utilizada, contendo os três integrantes do grupo, não é a mais adequada. Entretando, conseguimos visualizar a segmentação da imagem em dois grupos, um acima e outro abaixo do threshold, possuindo essa característica "binária" nas imagens.</p>
       </div>
     </div>
 
