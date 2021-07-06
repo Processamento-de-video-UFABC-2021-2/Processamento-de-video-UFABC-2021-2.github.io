@@ -48,19 +48,66 @@
             <div>
               <h3>Contexto</h3>
               <p>Em março de 2020 fomos acometidos pela pandemia originada pelo Sars-CoV-2, o Covid-19. Devido a isso, a maneira com que estávamos costumados a viver mudou de maneira drástica, agora com isolamentos e uso de materias para medida preventiva contra o vírus, sendo o uso da máscara facial que cubra as vias aereas o mais marcante.</p>
-              <p>Visto isso, propomos criar uma aplicação, que sob as condições ideias, consiga identificar a presença do uso de máscara tanto em vídeos, visando ser utilizada em locais de grande movimentação, como em catracas de entrada para transporte público, entradas de shoppings e comércios.</p>
-              <h3>Cenário do Trabalho</h3>
-              <p><strong>Objetivo:</strong> O projeto possui como objetivo criar uma aplicação, utilizando biblotecas python, como o openCV, e todo o aprendizado adquirido em aulas práticas e de laboratório, para conseguir identificar via vídeo se o usuário está utilizando máscara facial.</p>
-              <p>Nesse sentido, limitamos o cenário para o correto comportamento da aplicação, sendo ele a limitação de apenas um usuário por execução e apenas serão identificadas máscaras faciais de cor branca.</p>
-              <p>No projeto, além da bibioteca OpenCV, pretendemos utilizar técnicas de inteligência artificial, como "deep learning" via TensorFlow para identificação em tempo real, visando o uso em câmeras ao vivo.</p>
+              <p>Mesmo diante de amplas campanhas mundiais sobre a necessidade do uso de máscara, podemos ver que não é toda população que segue as medidas preventivas, o que contribui para o alongamento da pandemia e a disseminação do vírus.</p>
+              <h3>Cenário do trabalho</h3>
+              <p>Dessa forma, propomos criar uma aplicação que, sob as condições ideias, consiga identificar a presença do uso de máscara tanto em vídeos, visando ser utilizada em locais de grande movimentação, como em catracas de entrada para transporte público, entradas de shoppings e comércios.</p>
+              <h3>Atividades do Trabalho</h3>
+              <p>Assim, dividimos o nosso trabalho em três fases:</p>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked onclick="return false">
+                <label class="form-check-label" for="flexCheckChecked">
+                  Obtenção de dados
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onclick="return false">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Treinamento do classificador via inteligência Artificial <i>(Em andamento)</i>
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onclick="return false">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Testes unitários do funcionamento da aplicação e Análise de Resultados
+                </label>
+              </div>
             </div>
           </div>
           <div class="col-2 mt-4">
             <img src="/Assets/wear_mask.jpg" class="col-6" style="width: 250px; height: 360px;" alt="Original_avatar">
           </div>
         </div>
+        <div class="d-flex justify-content-center">
+          <div class="row">
+            <img src="/Assets/t1/diagrama.png">
+          </div>
+        </div>
+        <p class="text-center mt-2"><i>Diagrama do Trabalho</i></p>
+        <h3 class="mt-4">Implementação do Trabalho</h3>
+        <h4 class="mt-4 text-secondary">> Obtenção de dados</h4>
+        <p>Para confecção da aplicação é necessário criar o corpus que será analisado pelos algorítmos de inteligência artificial.</p>
+        <p>No primeiro momento, pesquisamos por <i>datasets</i> existentes sobre o tema, porém, pelo fato de se tratar de um cenário jamais visto, houveram dificuldades para encontrarmos bons dados, muitas vezes com imagens de baixa qualidade ou alteradas de maneira digital.</p>
+        <p>Assim, foi utilizamos a ferramenta <a href="https://unsplash.com/" target="_blank">Unsplash</a>, auto-denominada como <i>"The internet’s source of freely-usable images"</i>, ou seja, uma fonte de imagens para ser usada gratuitamente, livres de quaisquer tipo de direitos autorais. Desse modo, utilizamos sua API, a qual a partir de um parâmetro de busca, retorna os endereços das imagens em diversas resoluções. Para o projeto, o parâmetro de busca utilizado foi <i>"face mask"</i>, para obter fotos de pessoas utilizando máscaras faciais. Por conseguinte, foi criado um script na linguagem JavaScript para realizar o downlaod das imagens no tamanho <i>"small"</i>, a partir de suas URLs obtidas via API.</p>
+        <div class="d-flex justify-content-center">
+          <div class="row">
+            <img src="/Assets/t1/js-code1.jpg" class="col-4">
+            <img src="/Assets/t1/js-code2.jpg" class="col-4">
+            <img src="/Assets/t1/js-code3.jpg" class="col-4">
+          </div>
+        </div>
+        <p class="text-center mt-2"><i>Código do script em JS para download das imagens</i></p>
+        <p>Após o download das imagens, foi necessário realizar uma revisão sobre as mesmas, pois o parâmetro de busca traz imagens incongruentes ao projeto e, por se tratar de uma automação, não houve um "filtro" inicial. No fim, foi possível construir um corpus com mais de 1.200 imagens.</p>
+        <h4 class="mt-4 text-secondary">> Treinamento do classificador via inteligência Artificial</h4>
+        <p>Para criarmos o classificador que identifica o uso de máscara utilizaremos metodologias de <i>"deep learning"</i> via <a href="https://www.tensorflow.org/?hl=pt-br" target="_blank">TensorFlow</a>, um framework open source para machine learning.</p>
+        <h3 class="mt-4">Próximos passos</h4>
+          <h5 class="mt-4">Referências</h5>
       </div>
+
+
+
+
     </div>
+  </div>
 
 
   </div>
