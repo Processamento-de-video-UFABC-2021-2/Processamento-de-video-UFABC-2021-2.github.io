@@ -48,34 +48,37 @@
             <div>
               <h3>Contexto</h3>
               <p>Em março de 2020 fomos acometidos pela pandemia originada pelo Sars-CoV-2, o Covid-19. Devido a isso, a maneira com que estávamos costumados a viver mudou de maneira drástica, agora com isolamentos e uso de materias para medida preventiva contra o vírus, sendo o uso da máscara facial que cubra as vias aereas o mais marcante.</p>
+              <p>Estudos desenvolvidos por pesquisadores brasileiros em parceria com a Secretaria Municipal de Saúde Capital (SMS), apontam que o uso de máscara reduz as chances de infecção por Covid-19 em até 87%. Isso explica a adoção da obrigatóriedade do uso de máscaras no enfrentamento da pandemia, a qual foi adotada em partes pelo governo, porém abraçada pela maioria esmagadora dos estabelecimentos</p>
               <p>Mesmo diante de amplas campanhas mundiais sobre a necessidade do uso de máscara, podemos ver que não é toda população que segue as medidas preventivas, o que contribui para o alongamento da pandemia e a disseminação do vírus.</p>
-              <h3>Cenário do trabalho</h3>
-              <p>Dessa forma, propomos criar uma aplicação que, sob as condições ideias, consiga identificar a presença do uso de máscara tanto em vídeos, visando ser utilizada em locais de grande movimentação, como em catracas de entrada para transporte público, entradas de shoppings e comércios.</p>
-              <h3>Atividades do Trabalho</h3>
-              <p>Assim, dividimos o nosso trabalho em três fases:</p>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked onclick="return false">
-                <label class="form-check-label" for="flexCheckChecked">
-                  Obtenção de dados
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onclick="return false">
-                <label class="form-check-label" for="flexCheckDefault">
-                  Treinamento do classificador via inteligência Artificial <i>(Em andamento)</i>
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onclick="return false">
-                <label class="form-check-label" for="flexCheckDefault">
-                  Testes unitários do funcionamento da aplicação e Análise de Resultados
-                </label>
-              </div>
+              <p>Nesse contexto, a tecnologia e seus recursos demonstram-se grandes aliados ao nosso propósito: <strong>ajudar a combater a disseminação do vírus</strong>. Ao utilizarmos métodos capazes de detectar de objetos via mídia digital(imagem/vídeo), como já é utilizado pelo sistema de trânsito para aplicar multas, identificando placas de veículos, somos capazes também de detectar o uso dos equipamentos de proteção individual(EPI), como no caso desse trabalho, a máscara facial.</p>
             </div>
           </div>
           <div class="col-2 mt-4">
             <img src="/Assets/wear_mask.jpg" class="col-6" style="width: 250px; height: 360px;" alt="Original_avatar">
           </div>
+        </div>
+        <h3>Cenário do trabalho</h3>
+        <p>Dessa forma, propomos criar uma aplicação que, sob as condições ideias, consiga identificar a presença do uso de máscara em vídeos, visando ser utilizada em locais de grande movimentação, como em catracas de entrada para transporte público, entradas de shoppings e comércios.</p>
+        <p>Nesse cenário de aplicação, o software servirá como "catraca" e validador para o cliente adentrar no estabelecimento, podendo ou não liberar a entrada a partir da identificação do uso de máscara facial. Isso traria maior satisfação para o cliente, pois o mesmo estaria protegido ao frequentar a loja, tendo assim impacto nas vendas.</p>
+        <h3>Atividades do Trabalho</h3>
+        <p>Assim, dividimos o nosso trabalho em três fases:</p>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked onclick="return false">
+          <label class="form-check-label" for="flexCheckChecked">
+            Pré-processamento de dados
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onclick="return false">
+          <label class="form-check-label" for="flexCheckDefault">
+            Treinamento do classificador via inteligência Artificial <i>(Em andamento)</i>
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onclick="return false">
+          <label class="form-check-label" for="flexCheckDefault">
+            Testes unitários do funcionamento da aplicação e Análise de Resultados
+          </label>
         </div>
         <div class="d-flex justify-content-center">
           <div class="row">
@@ -84,7 +87,7 @@
         </div>
         <p class="text-center mt-2"><i>Diagrama do Trabalho</i></p>
         <h3 class="mt-4">Implementação do Trabalho</h3>
-        <h4 class="mt-4 text-secondary">> Obtenção de dados</h4>
+        <h4 class="mt-4 text-secondary">> Pré-processamento de dados</h4>
         <p>Para confecção da aplicação é necessário criar o corpus que será analisado pelos algorítmos de inteligência artificial.</p>
         <p>No primeiro momento, pesquisamos por <i>datasets</i> existentes sobre o tema, porém, pelo fato de se tratar de um cenário jamais visto, houveram dificuldades para encontrarmos bons dados, muitas vezes com imagens de baixa qualidade ou alteradas de maneira digital.</p>
         <p>Assim, foi utilizamos a ferramenta <a href="https://unsplash.com/" target="_blank">Unsplash</a>, auto-denominada como <i>"The internet’s source of freely-usable images"</i>, ou seja, uma fonte de imagens para ser usada gratuitamente, livres de quaisquer tipo de direitos autorais. Desse modo, utilizamos sua API, a qual a partir de um parâmetro de busca, retorna os endereços das imagens em diversas resoluções. Para o projeto, o parâmetro de busca utilizado foi <i>"face mask"</i>, para obter fotos de pessoas utilizando máscaras faciais. Por conseguinte, foi criado um script na linguagem JavaScript para realizar o downlaod das imagens no tamanho <i>"small"</i>, a partir de suas URLs obtidas via API.</p>
@@ -99,8 +102,38 @@
         <p>Após o download das imagens, foi necessário realizar uma revisão sobre as mesmas, pois o parâmetro de busca traz imagens incongruentes ao projeto e, por se tratar de uma automação, não houve um "filtro" inicial. No fim, foi possível construir um corpus com mais de 1.200 imagens.</p>
         <h4 class="mt-4 text-secondary">> Treinamento do classificador via inteligência Artificial</h4>
         <p>Para criarmos o classificador que identifica o uso de máscara utilizaremos metodologias de <i>"deep learning"</i> via <a href="https://www.tensorflow.org/?hl=pt-br" target="_blank">TensorFlow</a>, um framework open source para machine learning.</p>
+        <i>[EM ANDAMENTO...]</i>
         <h3 class="mt-4">Próximos passos</h4>
-          <h5 class="mt-4">Referências</h5>
+          <ul>
+            <li>
+              Estudo e aprendizado sobre TensorFlow
+            </li>
+            <li>
+              Treinamento do algorítmo
+            </li>
+            <li>
+              Confecção do classificador que identifica a utilização de máscara.
+            </li>
+            <li>
+              Estudo dos resultados do classificador, analisando sua taxa de acerto
+            </li>
+            <li>
+              Testes unitários em webcams
+            </li>
+            <li>
+              Análise dos resultados
+            </li>
+            <li>
+              Conclusão e Observações para futuras melhorias
+            </li>
+          </ul>
+          <h5 class="mt-4">Referências Bibliográficas</h5>
+          <p>GETTY IMAGES. Unsplash: Beautiful Free Images & Pictures, 2021. Documentation. Disponível em: <a href="https://unsplash.com/documentation" target="_blank">https://unsplash.com/documentation</a>. Acesso em: 06 de jul. de 2021</p>
+          <p>USO DE MÁSCARA REDUZ CHANCE DE INFECÇÃO POR CORONAVÍRUS EM 87%, DIZ ESTUDO DE UNIVERSIDADES DO RS. G1 - Globo, 2021. Disponível em: <a href="https://g1.globo.com/rs/rio-grande-do-sul/noticia/2021/03/05/uso-de-mascara-reduz-chance-de-infeccao-por-coronavirus-em-87percent-diz-estudo-de-universidades-do-rs.ghtml" target="_blank">https://g1.globo.com/rs/rio-grande-do-sul/noticia/2021/03/05/uso-de-mascara-reduz-chance-de-infeccao-por-coronavirus-em-87percent-diz-estudo-de-universidades-do-rs.ghtml</a>. Acesso em: 06 de jul. de 2021</p>
+          <p>ROSEBROK, Adrian. COVID-19: Face Mask Detector with OpenCV, Keras/TensorFlow, and Deep Learning, 2020. Disponível em: <a href="https://www.pyimagesearch.com/2020/05/04/covid-19-face-mask-detector-with-opencv-keras-tensorflow-and-deep-learning/" target="_blank">https://www.pyimagesearch.com/2020/05/04/covid-19-face-mask-detector-with-opencv-keras-tensorflow-and-deep-learning/</a>. Acesso em: 06 de jul. de 2021</p>
+          <p>BHANDARY, Prajna. Observations, 2020. Disponível em: <a href="https://github.com/prajnasb/observations" target="_blank">https://github.com/prajnasb/observations</a>. Acesso em: 06 de jul. de 2021</p>
+          <p>TensorFlow. Construa uma rede neural para executar a classificação (Coding TensorFlow em português), 2019.(07m30s). Disponível em: <a href="https://www.youtube.com/watch?v=qaIX5ZLiR1g" target="_blank">https://www.youtube.com/watch?v=qaIX5ZLiR1g</a>. Acesso em: 06 de jul. de 2021</p>
+          <p>YASTREMSKY, David. Creating a Powerful COVID-19 Mask Detection Tool with PyTorch, 2021. Disponível em: <a href="https://towardsdatascience.com/creating-a-powerful-covid-19-mask-detection-tool-with-pytorch-d961b31dcd45" target="_blank">https://towardsdatascience.com/creating-a-powerful-covid-19-mask-detection-tool-with-pytorch-d961b31dcd45</a>. Acesso em: 06 de jul. de 2021</p>
       </div>
 
 
