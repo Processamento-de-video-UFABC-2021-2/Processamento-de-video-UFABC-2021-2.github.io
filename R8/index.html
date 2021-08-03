@@ -57,7 +57,96 @@
 
     <div class="card">
       <div class="card-header">
-        <h2>Originais</h2>
+        <h2>Introdução</h2>
+      </div>
+      
+      <div class="card-body" style="padding: 2rem;">
+        <p class="h4 text-justify" style="font-weight: normal;">
+          O laboratório 8 tem como objetivo estudar o rastreamento de objetos (<em>tracker object</em>),
+          foram trabalhados dois dos 7 algoritimos disponíveis no openCV usados para rastreamento, são eles:
+        </p>
+        <br>
+        <ui>
+          <li class="h4 text-justify" style="font-weight: normal;">
+            <b>KCF</b> <em>(Kernelized Correlation Filters)</em> : Que foi o algoritimo proposto pelo professor.
+            <p class="h4 text-justify" style="font-weight: normal; margin-left: 30px;">
+              Este rastreador se baseia nas ideia apresentada nos rastreadores <b>MIL</b> (<em>Multiple Instance Learning</em>) e <b>BOOSTING</b>,
+              que são classificadores precisam ser treinados em tempo de execução com exemplos positivos e negativos do objeto,
+              porém este considera apenas a localização atual do objeto como um exemplo positivo,
+              enquanto aquele olha em uma pequena vizinhança ao redor da localização atual para gerar vários exemplos positivos em potencial.
+            </p>
+            <p class="h4 text-justify" style="font-weight: normal; margin-left: 30px;">
+              Este rastreador utiliza o fato de que as múltiplas amostras positivas usadas no rastreador <b>MIL</b> têm grandes regiões de sobreposição.
+              Esses dados sobrepostos levam a algumas propriedades matemáticas interessantes que são exploradas por
+              este rastreador para tornar o rastreamento mais rápido e preciso ao mesmo tempo.
+            </p>
+          </li>
+
+          <li class="h4 text-justify" style="font-weight: normal;">
+            <b>MOSSE</b> <em>(Minimum Output Sum of Squared Error)</em> : Que foi o algoritimo escolhido pelo grupo, devido a sua robustez.
+            <p class="h4 text-justify" style="font-weight: normal; margin-left: 30px;">
+              Este rastreador usa uma correlação adaptativa para rastreamento de objetos que produz filtros de correlação estáveis ​​quando inicializados usando um único quadro.
+            </p>
+          </li>
+        </ui>
+
+      </div>
+    </div>
+    
+    <br>
+
+    <div class="card">
+      <div class="card-header">
+        <h2>Código passo-a-passo</h2>
+      </div> 
+
+      <div class="card-body" style="padding: 2rem;">
+        <ui>
+          <li class="h5 text-justify" style="font-weight: normal;">
+            Informar o tipo de algoritimo a ser usado para crição do objeto <em>tracker</em> e o caixa delimitadora inicial,
+            que foi obtida localmente, pois o openCV não suportou a função, utilizando a função <em>selectROI</em>.
+          </li>
+          <li class="h5 text-justify" style="font-weight: normal;">
+            Criação do objeto tracker com base no algoritmo selecionado.
+          </li>
+          <li class="h5 text-justify" style="font-weight: normal;">
+            Leitura do vídeo de entrada.
+          </li>
+            Criação e configuração do objeto de saída de vídeo.
+          <li class="h5 text-justify" style="font-weight: normal;">
+            Leitura do primeiro frame através da função <em>read</em> do objeto de video.
+          </li>
+          <li class="h5 text-justify" style="font-weight: normal;">
+            Inicialização do restreamento através da função <em>init</em> do objeto <em>tracker</em>.
+          </li>
+          <li class="h5 text-justify" style="font-weight: normal;">
+            Laço <em>while</em> para processar todo o vídeo.
+          </li>
+          <li class="h5 text-justify" style="font-weight: normal;">
+            Efetuar leitura de frame a frame, do mesmo modo que foi feito a leitura do primeiro frame.
+          </li>
+          <li class="h5 text-justify" style="font-weight: normal;">
+            Atualização da caixa leimitadora através do método <em>update</em> do objeto <em>tracker</em>, passando como parametro o frame atual.
+          </li>
+          <li class="h5 text-justify" style="font-weight: normal;">
+            Dependendo da resposta do passo anterior desenhar a caixa limitadora, ou relatar o erro em forma de texto no frame.
+          </li>
+          <li class="h5 text-justify" style="font-weight: normal;">
+            Escrever no frame o algoritimo utilizado.
+          </li>
+          <li class="h5 text-justify" style="font-weight: normal;">
+            Por fim gravar o frame no objeto de saída.
+          </li>
+        </ui>
+      </div>
+
+    </div>
+
+    <br>
+    
+    <div class="card">
+      <div class="card-header">
+        <h2>Vídeos riginais</h2>
       </div> 
 
       <div class="card-body" style="padding: 2rem;">
@@ -155,6 +244,46 @@
             Your browser does not support the video tag.
           </video>
         </div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="card">
+      <div class="card-header">
+        <h2>Conclusão</h2>
+      </div>
+
+      <div class="card-body" style="padding: 2rem;">
+        <p class="h4" style="font-weight: normal;">
+          Com os vídeos utilizados foi possivel ter uma ideia do poder dos algorítimos de rastreamento de objeto.
+        </p>
+        <p class="h4" style="font-weight: normal;">
+          No vídeo do cachorro de lego ambos algoritimos tiveram bons resultados,
+          mas esse não era um video que não apresenta grandes desafios em relação a rastreamento.
+        </p>
+        <p class="h4" style="font-weight: normal;">
+          No vídeo do skate o <b>KCF</b> ele perde o rastreamento do skate antes mesmo da manobra ser executada, ou seja quando há uma pequena alteração no posicionamento dos pés,
+          já o <b>MOSSE</b> faz alguns ajustes na caixa delimitadora para manter o rastreamento, porém no final do video tivemos o entendimento que ele passou a rastrear o tenis e não o skate em si, mas ainda assim são resoltados melhores que o <b>KCF</b>.
+        </p>
+        <p class="h4" style="font-weight: normal;">
+          O terceira vídeo foi retirado dos exemplos do openCv, disponível em
+          <a href='https://github.com/opencv/opencv_extra/tree/master/testdata/cv/tracking'>https://github.com/opencv/opencv_extra/tree/master/testdata/cv/tracking</a>,
+          que explora bem a parte de oclusão, <b>KCF</b> teve bons resultados em rastrear o rosto e em momento algum apresentou falhas em encontrá-lo, enquanto o <b>MOSSE</b> ao final do vídeo
+          passou a rastrear o livro usado para ocultar parte do rosto.
+        </p>
+        <p class="h4" style="font-weight: normal;">
+          Os vídeos escolhidos para este lab não apresentou algumas variações interessantes a serem exploradas quanto ao rastreamento de objetos, tais como:
+        </p>
+        <ui>
+          <li class="h5" style="font-weight: normal;">Iluminação</li>
+          <li class="h5" style="font-weight: normal;">Escala</li>
+          <li class="h5" style="font-weight: normal;">Pose</li>
+          <li class="h5" style="font-weight: normal;">Deformação</li>
+        </ui>
+        <p class="h4" style="font-weight: normal;">
+          Além da oclusão e resurgimento total do obejto a ser rastreado. Com estas variações poderiamos ter uma análise melhor quando ao desempenho de cada alorítimo.
+        </p>
       </div>
     </div>
 
