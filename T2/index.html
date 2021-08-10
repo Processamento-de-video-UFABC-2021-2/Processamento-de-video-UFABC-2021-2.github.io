@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+  <title>ESZI032-17SA T1</title>
+  <link rel="icon" href="/Assets/Logo_UFABC.svg" />
+
+  <style>
+    .content {
+      width: 100vw;
+      min-height: calc(100vh - 56px);
+      background-color: #f2f2f3;
+      padding: 2rem 1rem;
+    }
+  </style>
+
+  <title>Hello, world!</title>
+
+  <!-- load components -->
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script>
+    $(function () {
+      $("#navbar").load("../components/navBar.html");
+    });
+  </script>
+
+</head>
+
+<body>
+
+  <header id="navbar"></header>
+
+  <div class='content'>
+
+    <h1>Detecção do uso de Máscara Facial</h1>
+
+    <div class="card">
+      <div class="card-body" style="padding: 2rem;">
+        
+        <h3>Atividades do Trabalho</h3>
+        <p>Assim, dividimos o nosso trabalho em três fases:</p>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked onclick="return false">
+          <label class="form-check-label" for="flexCheckChecked">
+            Pré-processamento de dados
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked onclick="return false">
+          <label class="form-check-label" for="flexCheckDefault">
+            Treinamento do classificador via inteligência Artificial
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked onclick="return false">
+          <label class="form-check-label" for="flexCheckDefault">
+            Testes unitários do funcionamento da aplicação e Análise de Resultados
+          </label>
+        </div>
+       
+        <h3 class="mt-4">Implementação do Trabalho</h3>
+    
+        <h4 class="mt-4 text-secondary">> Treinamento do classificador via inteligência Artificial</h4>
+        <p>Para criarmos o classificador que identifica o uso de máscara utilizaremos metodologias de <i>"deep learning"</i> via <a href="https://www.tensorflow.org/?hl=pt-br" target="_blank">TensorFlow</a>, um framework open source para machine learning.</p>
+        <p>
+          O algoritmo utilizado para criar o classificador foi o KNN (K-Nearest Neighbours), que é um  algoritmo de aprendizagem supervisionada. O KNN consiste basicamente em medir a distância euclidiana entre o dado a ser classificado com os demais já classificados, obter as K menores distâncias e classificar o novo dado com a classe que houve maior ocorrência.
+        </p>
+        <p>
+          Utilizamos o biblioteca @tensorflow-models/knn-classifier para construir um modelo KNN com base no dataset obtido no passo anterior, esta biblioteca oferece um utilitário para criar um classificador usando o algoritmo KNN. 
+        </p>
+
+        
+        <div style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+          <h5>Figura 1: Arquivo principal</h5>
+          <img src="/Assets/t2/main.png" class="col-6" alt="Original_avatar">
+        </div>
+
+        <br>
+
+        <div style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+          <h5>Figura 2: Método Setup da classe da IA</h5>
+          <img src="/Assets/t2/iaClassSetup.png" class="col-6" alt="Original_avatar">
+        </div>
+        
+        <br>
+
+        <p>
+          A Figura 1 representa o arquivo principal do classificador, onde na linha 13 temos a execução do setup da classe da IA, que carrega o mobilenet, conforme mostrado na Figura 2,
+          que será usado posteriormente para leitura, análise dos dados, além da conversão para tensor.  
+        </p>
+
+        <div style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+          <h5>Figura 3: configuração do dataset</h5>
+          <img src="/Assets/t2/SettingData.png" class="col-6" alt="Original_avatar">
+        </div>
+
+        <br>
+        
+        <div style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+          <h5>Figura 4: Processar imagem</h5>
+          <img src="/Assets/t2/SettingData.png" class="col-6" alt="Original_avatar">
+        </div>
+        
+        <br>
+
+        <p>
+          As linhas 15 à 20 são referentes ao carregamento e configuração do dataset. Segue os seguintes passos:
+        </p>
+
+        <ui>
+          <li>Adicionar o caminho das imagens de cada classificação, com máscara e sem máscara, na variável tag (linha 15-16)</li>
+          <li>
+            Carrega a o dataset, através do método getDataSet, que percorre todos os caminhos contidos em tags, Figura 3,
+            carrega e processa cada imagem através da função loadLocalImageAndPreprocessing (Figura 4), que retorna a imagem em pixels (tensor),
+            então adiciona esse imagem e a classificação dela em no dataset.
+          </li>
+        </ui>
+
+        <div style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+          <h5>Figura 5: Treinar classificador</h5>
+          <img src="/Assets/t2/addExemple.png" class="col-6" alt="Original_avatar">
+        </div>
+        
+        <br>
+        <p>
+          O próximo passo então foi o adicionar o treinamento do classificador, adicionando exemplos nos modelos, para isso foi percorrido os
+          treinadores através de um laço for e adicionando-os através do método addExempleToModel, a Figura 5 ilustra o que esse método executa.
+        </p>
+        <p>
+          Para adicionar exemplos na construção do modelo foi feito uma transferência de aprendizagem, por meio do método infer do mobilenet, citado anteriormente em setup,
+          passando como parâmetro o tensor de cada "treinador", então o retorno desse método como sua devida classe é adicionado ao modelo classificador, com o método addExample.
+        </p>
+
+        <p>
+          Por fim temos o método getModel (linha 26), que retorna um json com do modelo obtido com o treinamento do classificador,
+          e na linha 27 há o armazenamento desse modelo em um arquivo externo. 
+        </p>
+
+        <h4 class="mt-4 text-secondary">> Testes unitários em webcams</h4>
+
+        <p>
+          Para realizar os testes unitários criamos uma aplicação web, utilizando o framework Angular.
+        </p>
+        <p>
+          A aplicação foi hospedada no netlify por ser um serviço que possui um plano gratuito com SSL, que é necessário pois para ter acesso a câmera do usuário
+          deve ser usado o protocolo https.
+        </p>
+
+        <div style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+          <h5>Figura 6: Classe app</h5>
+          <img src="/Assets/t2/setupClassApp.png" class="col-6" alt="Original_avatar">
+        </div>
+
+        <p>
+          A aplicação web segue uma estrutura simples onde tudo é criado diretamente no componente app, A primeira versão que foi construída possuía apenas uma tag de vídeo para exibir e capturar a imagem da câmera
+          do usuário e uma tag canvas que alternava entre as cores vermelha e verde, para indicar a presença ou não do uso de máscara.
+        </p>
+        <p>
+          O componente app inicia o classificador na função setup, que é chamada assim que a classe é instanciada através do constructor, ela recebe o modelo em json (obtido na linha 26 Figura 1), carrega o mobilenet,
+          cria um objeto classificador com a função create do knnClassifier, percorre as chaves do modelo em json e cria um objeto cujos valores das chaves são convertidos em tensores,
+          define o classificador com o valor desse modelo.
+        </p>
+
+        <div style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+          <h5>Figura 7: Previsão de classe</h5>
+          <img src="/Assets/t2/predict.png" class="col-6" alt="Original_avatar">
+        </div>
+
+        <p>
+          A primeira versão da aplicação capturava um frame da tag de vídeo a cada 1 segundo, processava esse frame e previa a classificação do mesmo, através da função predict (Figura 7).
+          A Figura 8 é uma ilustração da aplicação com e sem máscara, onde é possível ver o funcionamento do classificador, porém ainda havia uma certa incoerência na classificação
+          por conta do frame processado, se o usuário estivesse em movimento no momento da captura o classificador podia efetuar uma má previsão, com isso foi feito uma segunda versão do app. 
+        </p>
+
+        <div style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+          <h5>Figura 9: Captura dos frames</h5>
+          <img src="/Assets/t2/capture.png" class="col-6" alt="Original_avatar">
+        </div>
+
+        <p>
+          Na aplicação captura 3 frames em um intervalo de 400 milissegundos, processa esses frames para prever suas classificação e retorna a classificação com mais incidência, Figura 9,
+          desta foi possível ter uma classificação mais precisa quanto ao uso ou não da máscara. Além da mudança na lógica da captura de imagem foi feita algumas mudanças no layout,
+          os 3 frames processados são exibidos no canto inferior, a imagem em tempo real exibida acima e a classificação é ilustrada em alguns elementos (texto e imagem) no centro,
+          que permite o acesso se for classificado com máscara ou restringe se for classificado como sem máscara.  
+        </p>
+        
+        <div style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+          <h5>Figura 10: Versão 2 da aplicação</h5>
+          <img src="/Assets/t2/accessRestrict.png" class="col-6" alt="Original_avatar">
+          <img src="/Assets/t2/accessAprove.png" class="col-6" alt="Original_avatar">
+        </div>
+
+
+        <h4 class="mt-4 text-secondary">> Análise dos resultados</h4>
+
+        <p>
+          A aplicação comporta-se de maneira satisfatória, sendo possível identificar a presença, ou não, da máscara facial.
+        </p>
+        <p>
+          O algoritmo classificador obteve melhor performance para imagens, pois obter frames de um vídeo é suscetível a complicações, como dito anteriormente.
+        </p>
+        <p>
+          Entretanto, da maneira como está hoje, não seria possível utilizá-lo como controle de acesso 100% confiável, pois
+          há diferentes cenários que podem gerar falhas, os quais serão abordados na análise.
+        </p>
+        <p>
+          É visto que, diante de cenários adversos, como falta de luminosidade, presença de mais de uma pessoa, falta ou
+          excesso de proximidade da câmera, a aplicação não é capaz de identificá-los e tratá-los.
+        </p>
+        <p>
+          Isso ocorre pois o dataset utilizado para treino possui fotos de boa qualidade, boa luminosidade, até mesmo de certa forma
+          artísticas. Logo, o classificador irá buscar por informações correlatas aos cenários em que foi confeccionado.
+        </p>
+        <p>
+          Para resolver esse problema seria necessário um dataset maior, o que acarretaria numa maior necessidade de
+          processamento, o que é uma grande complicação para o computador comum que possuímos.
+        </p>
+        <p>
+          Há também cenários de utilização incorreta da máscara, no qual a aplicação não possui inteligência para lidar com. Da
+          mesma forma, seria necessário incluir imagens do uso incorreto de máscara no dataset, e classificá-los como “no-mask”.
+        </p>
+
+        <h4 class="mt-4 text-secondary">> Conclusão e Observações para futuras melhorias</h4>
+
+        <p>
+          Com isso concluímos que, para a confecção de um classificador com altas taxas de acurácia e precisão, as quais são mandatórias para obtermos um alto nível de confiança e o
+          utilizarmos como controle de acesso, é necessário a construção de um dataset contendo situações adversas, para “blindá-lo” contra falhas.
+        </p>
+        <p>
+          A aplicação estruturada serve como uma POC (proof of concept) de que é possível identificar a presença de máscara
+          através de um streaming de vídeo, trazendo a oportunidade de ser utilizada para o bem de todos e, assim, diminuir a transmissão do vírus.
+        </p>
+
+        <br>
+          
+        <h5 class="mt-4">Referências Bibliográficas</h5>
+
+        <p>@TENSORFLOW-MODELS/MOBILENET. 2021. Disponível em: <a href="https://www.npmjs.com/package/%40tensorflow-models/mobilenet" target="_blank">https://www.npmjs.com/package/%40tensorflow-models/mobilenet</a>. Acesso em: 1 ago. 2021.</p>
+        <p>@TENSORFLOW-MODELS/KNN-CLASSIFIER. 2019. Disponível em: <a href="https://www.npmjs.com/package/@tensorflow-models/knn-classifier" target="_blank">https://www.npmjs.com/package/@tensorflow-models/knn-classifier</a>. Acesso em: 31 jul. 2021.</p>
+        <p>JOSÉ, Italo. KNN (K-Nearest Neighbors) #1. 2018. Disponível em: <a href="https://medium.com/brasil-ai/knn-k-nearest-neighbors-1-e140c82e9c4e" target="_blank">https://medium.com/brasil-ai/knn-k-nearest-neighbors-1-e140c82e9c4e</a>. Acesso em: 31 jul. 2021.</p>
+        <p>GETTY IMAGES. Unsplash: Beautiful Free Images & Pictures, 2021. Documentation. Disponível em: <a href="https://unsplash.com/documentation" target="_blank">https://unsplash.com/documentation</a>. Acesso em: 06 de jul. de 2021</p>
+        <p>USO DE MÁSCARA REDUZ CHANCE DE INFECÇÃO POR CORONAVÍRUS EM 87%, DIZ ESTUDO DE UNIVERSIDADES DO RS. G1 - Globo, 2021. Disponível em: <a href="https://g1.globo.com/rs/rio-grande-do-sul/noticia/2021/03/05/uso-de-máscara-reduz-chance-de-infeccao-por-coronavirus-em-87percent-diz-estudo-de-universidades-do-rs.ghtml" target="_blank">https://g1.globo.com/rs/rio-grande-do-sul/noticia/2021/03/05/uso-de-máscara-reduz-chance-de-infeccao-por-coronavirus-em-87percent-diz-estudo-de-universidades-do-rs.ghtml</a>. Acesso em: 06 de jul. de 2021</p>
+        <p>ROSEBROK, Adrian. COVID-19: Face Mask Detector with OpenCV, Keras/TensorFlow, and Deep Learning, 2020. Disponível em: <a href="https://www.pyimagesearch.com/2020/05/04/covid-19-face-mask-detector-with-opencv-keras-tensorflow-and-deep-learning/" target="_blank">https://www.pyimagesearch.com/2020/05/04/covid-19-face-mask-detector-with-opencv-keras-tensorflow-and-deep-learning/</a>. Acesso em: 06 de jul. de 2021</p>
+        <p>BHANDARY, Prajna. Observations, 2020. Disponível em: <a href="https://github.com/prajnasb/observations" target="_blank">https://github.com/prajnasb/observations</a>. Acesso em: 06 de jul. de 2021</p>
+        <p>TensorFlow. Construa uma rede neural para executar a classificação (Coding TensorFlow em português), 2019.(07m30s). Disponível em: <a href="https://www.youtube.com/watch?v=qaIX5ZLiR1g" target="_blank">https://www.youtube.com/watch?v=qaIX5ZLiR1g</a>. Acesso em: 06 de jul. de 2021</p>
+        <p>YASTREMSKY, David. Creating a Powerful COVID-19 Mask Detection Tool with PyTorch, 2021. Disponível em: <a href="https://towardsdatascience.com/creating-a-powerful-covid-19-mask-detection-tool-with-pytorch-d961b31dcd45" target="_blank">https://towardsdatascience.com/creating-a-powerful-covid-19-mask-detection-tool-with-pytorch-d961b31dcd45</a>. Acesso em: 06 de jul. de 2021</p>
+      </div>
+
+
+
+
+    </div>
+  </div>
+
+
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+</body>
+
+</html>
